@@ -16,10 +16,9 @@ export default function Home() {
       if (address.isDefault) {
         return prev
           .map((a) => ({ ...a, isDefault: false }))
-          // @ts-ignore
-          .concat({ ...address, id: Date.now().toString() });
+          .concat({ ...address, id: Date.now().toString(), isDefault: true });
       }
-      return [...prev, { ...address, id: Date.now().toString() }];
+      return [...prev, { ...address, id: Date.now().toString(), isDefault: address.isDefault ?? false }];
     });
   };
 
